@@ -31,16 +31,25 @@ export function TaskList() {
       setNewTaskTitle("");
     } else {
       alert("Informe um título para a sua nova task");
-      return;
     }
   }
 
   function handleToggleTaskCompletion(id: number) {
-    
+    tasks.forEach((task) => {
+      if(task.id === id) {
+        task.isComplete = true;
+        setTasks([...tasks]);
+      }
+    });
   }
 
   function handleRemoveTask(id: number) {
-    // Remova uma task da listagem pelo ID
+    tasks.forEach((task) => {
+      if(task.id === id) {
+        tasks.splice(tasks.indexOf(task), 1);
+        setTasks([...tasks]);
+      }
+    })
   }
 
   return (
